@@ -6,13 +6,14 @@ console.log('5' + 1); // 1 will be coerced to string
 // → 51
 console.log('five' * 2); // NaN
 // → NaN
-console.log(false == 0); // 0 is coerced to a boolean false
+console.log(false == 0); // 0 is coerced to a boolean false ===
+// ! Exercise figure out difference between == and ===, !==
 // → true
 
 const student = {
   name: 'John Apple',
   dob: '25Feb2010',
-};
+}; // Object literal syntax
 
 student.getReport(); // ! JS is dynamically typed and loaded language. You will crash when this is run. No static time warnings!.
 

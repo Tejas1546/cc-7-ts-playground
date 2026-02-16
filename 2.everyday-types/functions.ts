@@ -15,8 +15,10 @@ logAlbumInfo('American Beauty', 10, true);
 logAlbumInfo('Midnights', 13, true, 'stream');
 
 // * Rest Parameters
-
 function getAlbumFormats(album: Album, ...formats: string[]) {
+  for (let format of formats) {
+    console.log('Next format: ', format);
+  }
   return `${album.title} is available in the following formats: ${formats.join(
     ', ',
   )}`;
@@ -25,8 +27,6 @@ function getAlbumFormats(album: Album, ...formats: string[]) {
 getAlbumFormats(
   { artist: 'Radiohead', title: 'OK Computer', year: 1997 },
   'CD',
-  'LP',
-  'Cassette',
 );
 
 //* Also we can supply variable args by spreading an array as well.
@@ -43,13 +43,14 @@ type CitizenInfo = {
   country: string;
   passportNumber: string;
 };
-const getCitizenInfo = ({
-  name,
-  country,
-  passportNumber,
-}: CitizenInfo): void => {
+const getCitizenInfo = ({ name, country, passportNumber }: CitizenInfo): void =>
   console.log(name, country, passportNumber);
-};
+
+function getCitizenInfo1({ country, name, passportNumber }: CitizenInfo): void {
+  console.log(name);
+  console.log(country);
+  console.log(passportNumber);
+}
 
 getCitizenInfo({ name: 'Ram', country: 'India', passportNumber: 'XCZ-23' });
 
@@ -57,11 +58,13 @@ getCitizenInfo({ name: 'Ram', country: 'India', passportNumber: 'XCZ-23' });
 // We can create type aliases to functions
 type FuncNumToString = (s: number) => string;
 
-const fns: FuncNumToString = () => {}; // !fixme
+const fns: FuncNumToString = (s: number) => {
+  return '';
+}; // !fixme
 
 // * functions are first class citizens in JS, you can treat them like other values. A function that takes another function as its arg, or returns another function as return value is known as higher order function (More on this later)
 const higherOrder = (fn: FuncNumToString): string => {
-  return; //! fixme by invoking fn
+  return fn(10); //! fixme by invoking fn
 };
 
 // * Some type alias for function examples
@@ -73,3 +76,20 @@ type WithRest = (...rest: string[]) => number;
 
 // Multiple parameters
 type WithMultiple = (first: string, second: string) => number;
+
+// Create a type for a function that receives a string, and number, and returns a string ?
+type WithStringNumber = (s: string, count: number) => string;
+
+// Create a type for a function that receives two strings, followed by variable number of numbers
+// returns nothing.
+type TwoStringVarNums = (s1: string, s2: string, ...nums: number[]) => void;
+
+// Create a type for a function that takes no arguments, but returns a function that takes
+// a string and returns a number.
+type StringReturningNumber = (s: string) => number;
+type FuncReturningStringReturningNumber = () => (s: string) => number;
+
+// Type of a function that returns a function that returns a function that takes a string and returns a number.
+type FuncReturningFuncReturningFuncStringNum = () => () => (
+  s: string,
+) => number;

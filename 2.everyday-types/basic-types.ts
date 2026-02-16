@@ -1,5 +1,5 @@
 // * Basic types
-let example1: string = 'Hello World!';
+let example1: string = 'Hello World!'; //
 let example2: number = 42;
 let example3: boolean = true;
 let example4: symbol = Symbol(); // Unique value
@@ -9,17 +9,21 @@ let example7: undefined = undefined;
 
 // * Type inference
 // Not always we need to supply type. Many times TS can infer the type.
-let dob = '31 Aug 2020';
+let dob: string = '31 Aug 2020';
 dob = 20; // TS fixes the inferred type earlier. Only string is allowed for dob
 
 let isReleased = true;
 let trackCount = 13;
 
 // Function parameters always need annotation
-function add(a, b) {
+function add(a: number, b: number): number {
   //* hover to see what typescript is inferring
   return a + b;
 }
+
+add(1, 2);
+add('s', 1);
+add({}, 1);
 
 // It is a good practice to mention type of return value as well.
 // This will guide implementation to return correct value.
@@ -43,5 +47,5 @@ function subtract(a, b) {
 export let example11: string = 'Hello World!';
 export let example22: string = 42;
 export let example33: string = true;
-export let example44: string = Symbol();
+export let example44: symbol = Symbol();
 export let example55: string = 123n;
