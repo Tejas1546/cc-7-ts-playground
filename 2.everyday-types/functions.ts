@@ -3,37 +3,37 @@ const logAlbumInfo = (
   trackCount: number,
   isReleased: boolean,
   releaseDate?: string, // optional param
-  format = 'CD', // default param preferably must appear at the end, though technically this can come any place.
+  format = "CD", // default param preferably must appear at the end, though technically this can come any place.
 ): string => {
   // Arrow function
   // rest of function body
-  return '';
+  return "";
 };
 
-logAlbumInfo('Midnights', 13, true, '2022-10-21');
-logAlbumInfo('American Beauty', 10, true);
-logAlbumInfo('Midnights', 13, true, 'stream');
+logAlbumInfo("Midnights", 13, true, "2022-10-21");
+logAlbumInfo("American Beauty", 10, true);
+logAlbumInfo("Midnights", 13, true, "stream");
 
 // * Rest Parameters
 
 function getAlbumFormats(album: Album, ...formats: string[]) {
   return `${album.title} is available in the following formats: ${formats.join(
-    ', ',
+    ", ",
   )}`;
 }
 
 getAlbumFormats(
-  { artist: 'Radiohead', title: 'OK Computer', year: 1997 },
-  'CD',
-  'LP',
-  'Cassette',
+  { artist: "Radiohead", title: "OK Computer", year: 1997 },
+  "CD",
+  "LP",
+  "Cassette",
 );
 
 //* Also we can supply variable args by spreading an array as well.
-const albumFormats = ['CD', 'LP', 'Cassette'];
+const albumFormats = ["CD", "LP", "Cassette"];
 
 getAlbumFormats(
-  { artist: 'Radiohead', title: 'OK Computer', year: 1997 },
+  { artist: "Radiohead", title: "OK Computer", year: 1997 },
   ...albumFormats,
 );
 
@@ -51,7 +51,7 @@ const getCitizenInfo = ({
   console.log(name, country, passportNumber);
 };
 
-getCitizenInfo({ name: 'Ram', country: 'India', passportNumber: 'XCZ-23' });
+getCitizenInfo({ name: "Ram", country: "India", passportNumber: "XCZ-23" });
 
 // * function types
 // We can create type aliases to functions
