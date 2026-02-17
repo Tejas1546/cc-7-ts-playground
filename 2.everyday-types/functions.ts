@@ -3,37 +3,37 @@ const logAlbumInfo = (
   trackCount: number,
   isReleased: boolean,
   releaseDate?: string, // optional param
-  format = 'CD', // default param preferably must appear at the end, though technically this can come any place.
+  format = "CD", // default param preferably must appear at the end, though technically this can come any place.
 ): string => {
   // Arrow function
   // rest of function body
-  return '';
+  return "";
 };
 
-logAlbumInfo('Midnights', 13, true, '2022-10-21');
-logAlbumInfo('American Beauty', 10, true);
-logAlbumInfo('Midnights', 13, true, 'stream');
+logAlbumInfo("Midnights", 13, true, "2022-10-21");
+logAlbumInfo("American Beauty", 10, true);
+logAlbumInfo("Midnights", 13, true, "stream");
 
 // * Rest Parameters
 function getAlbumFormats(album: Album, ...formats: string[]) {
   for (let format of formats) {
-    console.log('Next format: ', format);
+    console.log("Next format: ", format);
   }
   return `${album.title} is available in the following formats: ${formats.join(
-    ', ',
+    ", ",
   )}`;
 }
 
 getAlbumFormats(
-  { artist: 'Radiohead', title: 'OK Computer', year: 1997 },
-  'CD',
+  { artist: "Radiohead", title: "OK Computer", year: 1997 },
+  "CD",
 );
 
 //* Also we can supply variable args by spreading an array as well.
-const albumFormats = ['CD', 'LP', 'Cassette'];
+const albumFormats = ["CD", "LP", "Cassette"];
 
 getAlbumFormats(
-  { artist: 'Radiohead', title: 'OK Computer', year: 1997 },
+  { artist: "Radiohead", title: "OK Computer", year: 1997 },
   ...albumFormats,
 );
 
@@ -52,14 +52,14 @@ function getCitizenInfo1({ country, name, passportNumber }: CitizenInfo): void {
   console.log(passportNumber);
 }
 
-getCitizenInfo({ name: 'Ram', country: 'India', passportNumber: 'XCZ-23' });
+getCitizenInfo({ name: "Ram", country: "India", passportNumber: "XCZ-23" });
 
 // * function types
 // We can create type aliases to functions
 type FuncNumToString = (s: number) => string;
 
 const fns: FuncNumToString = (s: number) => {
-  return '';
+  return "";
 }; // !fixme
 
 // * functions are first class citizens in JS, you can treat them like other values. A function that takes another function as its arg, or returns another function as return value is known as higher order function (More on this later)
@@ -95,3 +95,41 @@ type FuncReturningFuncReturningFuncStringNum = () => () => (
 ) => number;
 
 // ! exercise. You are suppose to design a binary search function, for an array of sorted student objects sorted by their seirial number.  Come up with minimum type needed to define a student. Binary search requires a comparison. Students are objects so, they use pass by reference semantics. Obviously we need to pass a compare function to binary search so that two students can be compared using their serial number. Essentially binary search function should take the array of students, the student to search for, and then a compare function that can compare two students and can return 0 if equal, 1 if first is greater than second, -1 otherwise
+
+type Student = {
+  serialNumber: number;
+  name: string;
+};
+
+type CompareFunc = (student1: Student, student2: Student) => 0 | 1 | -1;
+// type result = 0 | 1 | -1;
+
+// function compare(a: Student, b: Student) {
+//   if (a.serialNumber === b.serialNumber) return 0;
+//   if (a.serialNumber < b.serialNumber) return 1;
+//   return -1;
+// }
+
+function binarySearch(
+  students: Student[],
+  searchStudent: Student,
+  compare: CompareFunc,
+): boolean {
+  // let l = 0;
+  // let r = arr.length - 1;
+
+  // while (l <= r) {
+  //   const m = Math.floor((l + r) / 2);
+  //   const result = compare(arr[m], target);
+  //   if (result === 0) return m;
+  //   else if (result === -1) l = m + 1;
+  //   else if (result === 1) r = m - 1;
+  // }
+  // return -1;
+  return true;
+}
+
+let s1: Student = {
+  name: "varun",
+  serialNumber: 90,
+};

@@ -4,16 +4,16 @@
 
 const empty = {}; // Automatically has linkage to Object.prototype
 const empty1 = Object.create(Object.prototype); // Same as {}
-Object.prototype.hi = 'Some stuff'; //* FIXME:  How to tell typescript that we can this field in protototype?
+Object.prototype.hi = "Some stuff"; //* FIXME:  How to tell typescript that we can this field in protototype?
 
-console.assert(empty.hi === 'Some stuff'); // Automating tests via assert
+console.assert(empty.hi === "Some stuff"); // Automating tests via assert
 
-const st = 'This is crazy!';
-console.assert(st.hi === 'Some stuff'); // In JS under the hood everything is an object and has connection ultimately to Object.prototype
+const st = "This is crazy!";
+console.assert(st.hi === "Some stuff"); // In JS under the hood everything is an object and has connection ultimately to Object.prototype
 
 const displayable = {
   display() {
-    console.log('Displayable!');
+    console.log("Displayable!");
   },
 };
 
@@ -30,8 +30,8 @@ console.assert(Object.getPrototypeOf(doStuff) === Function.prototype);
 interface Function {
   scream: string;
 }
-Function.prototype.scream = 'screaming';
-console.assert(doStuff.scream === 'screaming');
+Function.prototype.scream = "screaming";
+console.assert(doStuff.scream === "screaming");
 
 // Similary Arrays, have Array.prototype
 Array.prototype.getLength = function () {
@@ -43,5 +43,10 @@ console.assert(nums.getLength() === 3);
 
 // ! Exercise
 // Extend String.prototype with a method  isPalindrome
+interface String {
+  isPanlindrome: boolean;
+}
+String.prototype.isPanlindrome = true;
+console.assert(doStuff.isPanlindrome === true);
 
 // ! Exercise Create an object called person. let it have name, id, and country as fields. Then create another object called citizen, that has this person object as its prototype. Let citizen additionally have fields: passportNumber, aadharNumber.
