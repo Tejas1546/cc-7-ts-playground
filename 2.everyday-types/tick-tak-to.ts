@@ -33,3 +33,54 @@ function statusOfTicTacToeBoard(board: Board): Status {
 const draw: Board = ["x", "o", "x", "x", "x", "o", "o", "x", "o"];
 
 statusOfTicTacToeBoard(draw);
+
+// ? We want a student DB
+// ? A student is going to have a name, he can be undergrad, graduate, post graduate
+// ? He can subscribe to few subjects. We do not know all subjects in advance. Ex: Math, Science, Kannada, English, Chemistry
+// ? He can have score out of 100
+// ? Student should have an address. Address must have street, city, state and pincode (in number)
+// ? For now our DB simply resides in an array. That is our DB
+
+// TODO: What is the type of student?
+// TODO: What is the type of the DB?
+
+type StudentGrade = "UNDER GRADUATE" | "GRADUATE" | "POST GRADUATE";
+
+type Address = {
+  street: string;
+  city: string;
+  state: string;
+  pincode: number;
+};
+
+type Student = {
+  name: string;
+  grade: StudentGrade;
+  subject: string[];
+  score: number;
+  address: Address;
+};
+
+type DB = {
+  student: Student[];
+};
+
+const student1: Student = {
+  name: "Tejas",
+  grade: "UNDER GRADUATE",
+  subject: ["Maths", "Science", "English", "Kannada"],
+  score: 100,
+  address: {
+    street: "Street1",
+    city: "Mangalore",
+    state: "Karnataka",
+    pincode: 575004,
+  },
+};
+
+const dataBase: DB = {
+  student: [student1],
+};
+
+// ! exercise
+// we want a dealership chain across country for a vehicle brand. And we want the dealership in only in mumbai delhi chennai banglore. and each location maintains the vehicles in stock. a vehicle has a name optional rn fuel type (petrol, diesel, electric). we need to be able to maintiaon the inventory for all these 4 cities i na ds

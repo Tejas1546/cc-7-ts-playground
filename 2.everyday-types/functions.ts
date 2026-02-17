@@ -57,11 +57,13 @@ getCitizenInfo({ name: "Ram", country: "India", passportNumber: "XCZ-23" });
 // We can create type aliases to functions
 type FuncNumToString = (s: number) => string;
 
-const fns: FuncNumToString = () => {}; // !fixme
+const fns: FuncNumToString = (s: number) => {
+  return "";
+}; // !fixme
 
 // * functions are first class citizens in JS, you can treat them like other values. A function that takes another function as its arg, or returns another function as return value is known as higher order function (More on this later)
 const higherOrder = (fn: FuncNumToString): string => {
-  return; //! fixme by invoking fn
+  return fn(10); //! fixme by invoking fn
 };
 
 // * Some type alias for function examples
@@ -73,3 +75,21 @@ type WithRest = (...rest: string[]) => number;
 
 // Multiple parameters
 type WithMultiple = (first: string, second: string) => number;
+
+// create a type for  a fun that recives a string and number and returns a string
+type withStringNumber = (s: string, n: number) => string;
+
+// create a type for a function that recives 2 strings followed by variable number of numbers
+// returns nothing
+type towStringVarNums = (s1: string, s2: string, ...nums: number[]) => void;
+
+// create a type for a function that take no arg but returns a funs that take a string and return and return a number
+type StringReturningNumber = (s: string) => number;
+type noArgFun = () => StringReturningNumber;
+// ! OR
+type noArgFun = () => (s: string) => number;
+
+//type of funcs that returns a function that returns a function that thake a string and returns a numbre
+type funcReturningFuncReturningFuncStringNum = () => () => (
+  s: string,
+) => number;
