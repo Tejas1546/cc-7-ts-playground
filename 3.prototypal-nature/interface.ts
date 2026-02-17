@@ -25,3 +25,7 @@ interface Flight {
 
 // ! Exercise : Create an instance of Flight.
 // ! Exercise: Create an instance of PassengerFlight. How do we implement displayInfo?
+
+// ! Exercise
+// Create an interface that has an id, name, and address.
+// Create Employee, and Student interfaces extending from this. Employee will have company associated, and student will have an institute associated in addition to id, name, and address

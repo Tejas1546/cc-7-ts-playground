@@ -40,3 +40,8 @@ Array.prototype.getLength = function () {
 
 const nums = [1, 2, 3];
 console.assert(nums.getLength() === 3);
+
+// ! Exercise
+// Extend String.prototype with a method  isPalindrome
+
+// ! Exercise Create an object called person. let it have name, id, and country as fields. Then create another object called citizen, that has this person object as its prototype. Let citizen additionally have fields: passportNumber, aadharNumber.
