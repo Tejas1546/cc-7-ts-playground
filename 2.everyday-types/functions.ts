@@ -94,6 +94,7 @@ type FuncReturningFuncReturningFuncStringNum = () => () => (
   s: string,
 ) => number;
 
+<<<<<<< HEAD
 // ! exercise. You are suppose to design a binary search function, for an array of sorted student objects sorted by their seirial number.  Come up with minimum type needed to define a student. Binary search requires a comparison. Students are objects so, they use pass by reference semantics. Obviously we need to pass a compare function to binary search so that two students can be compared using their serial number. Essentially binary search function should take the array of students, the student to search for, and then a compare function that can compare two students and can return 0 if equal, 1 if first is greater than second, -1 otherwise
 
 type Student = {
@@ -109,10 +110,20 @@ type CompareFunc = (student1: Student, student2: Student) => 0 | 1 | -1;
 //   if (a.serialNumber < b.serialNumber) return 1;
 //   return -1;
 // }
+=======
+// ! exercise. You are suppose to design a binary search function, for an array of sorted student objects sorted by their serial number.  Come up with a minimum type needed to define a student. Binary search requires a comparison. Students are objects so, they use pass by reference semantics. Obviously we need to pass a compare function to binary search so that two students can be compared using their serial number. Essentially binary search function should take the array of students, the student to search for, and then a compare function that can compare two students and can return 0 if equal, 1 if first is greater than second, -1 otherwise. Binary search should return true if student is found, false otherwise.
+
+type Student = {
+  serialNumber: number;
+};
+
+type CompareFunc = (strudent1: Student, student2: Student) => 0 | 1 | -1;
+>>>>>>> eecf671e118344a40b21fefccc118c3ffe6f3570
 
 function binarySearch(
   students: Student[],
   searchStudent: Student,
+<<<<<<< HEAD
   compare: CompareFunc,
 ): boolean {
   // let l = 0;
@@ -133,3 +144,10 @@ let s1: Student = {
   name: "varun",
   serialNumber: 90,
 };
+=======
+  compareFunc: CompareFunc,
+): boolean {
+  //TODO: implement
+  return true;
+}
+>>>>>>> eecf671e118344a40b21fefccc118c3ffe6f3570
